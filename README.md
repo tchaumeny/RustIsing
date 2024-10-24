@@ -1,10 +1,13 @@
-# A simple [Ising model](https://en.wikipedia.org/wiki/Ising_model) simulator
-
-*This project is written in Rust and should be built from sources with Cargo ([see documentation](https://doc.rust-lang.org/cargo/guide/working-on-an-existing-project.html)).*
+# A simple [Ising model](https://en.wikipedia.org/wiki/Ising_model) simulator written in Rust
 
 This project lets you simulate the d-dimensional Ising model in two modes:
 - **mcmc**: Computes an approximation of the energy and magnetization distributions using an MCMC cluster algorithm as described in <https://arxiv.org/abs/cond-mat/0311623>. In 2D, it also plots the resulting lattice.
 - **exact** (small lattices only): Iterates over all possible states using a [Gray code](https://en.wikipedia.org/wiki/Gray_code) algorithm and plots the exact energy and magnetization distributions.
+
+### Installation
+
+* Download a prebuilt binary from the [releases](https://github.com/tchaumeny/RustIsing/releases) section.
+* Or, build from sources using Cargo ([see documentation](https://doc.rust-lang.org/cargo/guide/working-on-an-existing-project.html)).
 
 ### Examples
 
