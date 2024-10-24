@@ -1,5 +1,6 @@
 [package]
 name = "rustising"
+repository = "https://github.com/tchaumeny/RustIsing"
 version = "0.1.0"
 edition = "2021"
 
@@ -16,4 +17,9 @@ slugify = "0.1.0"
 [[bin]]
 name = "ising"
 path = "src/main.rs"
+
+# The profile that 'cargo dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"
 
