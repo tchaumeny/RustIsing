@@ -77,28 +77,43 @@ impl Lattice {
                 (0..self.d)
                     .flat_map(|pos| -> Vec<Vec<i32>> {
                         vec![
-                            coords.iter().enumerate().map(|(i, v)| if i == pos { *v as i32 + 1 } else { *v as i32 }).collect(),
-                            coords.iter().enumerate().map(|(i, v)| if i == pos { *v as i32 - 1 } else { *v as i32 }).collect(),
+                            coords
+                                .iter()
+                                .enumerate()
+                                .map(|(i, v)| if i == pos { *v as i32 + 1 } else { *v as i32 })
+                                .collect(),
+                            coords
+                                .iter()
+                                .enumerate()
+                                .map(|(i, v)| if i == pos { *v as i32 - 1 } else { *v as i32 })
+                                .collect(),
                         ]
                     })
                     .map(|neighbour| {
-                        self.coords_to_idx(
-                            neighbour.iter().map(|x| wrap(*x)).collect())
+                        self.coords_to_idx(neighbour.iter().map(|x| wrap(*x)).collect())
                     })
                     .collect()
             }
-            BoundaryConditions::SymmetryBreaking => {
-                (0..self.d)
-                    .flat_map(|pos| -> Vec<Vec<i32>> {
-                        vec![
-                            coords.iter().enumerate().map(|(i, v)| if i == pos { *v as i32 + 1 } else { *v as i32 }).collect(),
-                            coords.iter().enumerate().map(|(i, v)| if i == pos { *v as i32 - 1 } else { *v as i32 }).collect(),
-                        ]
-                    })
-                    .filter(|candidate| candidate.iter().all(|x| { 0 <= *x && *x < self.n as i32 }))
-                    .map(|neighbour| self.coords_to_idx(neighbour.iter().map(|x| *x as usize).collect()))
-                    .collect()
-            }
+            BoundaryConditions::SymmetryBreaking => (0..self.d)
+                .flat_map(|pos| -> Vec<Vec<i32>> {
+                    vec![
+                        coords
+                            .iter()
+                            .enumerate()
+                            .map(|(i, v)| if i == pos { *v as i32 + 1 } else { *v as i32 })
+                            .collect(),
+                        coords
+                            .iter()
+                            .enumerate()
+                            .map(|(i, v)| if i == pos { *v as i32 - 1 } else { *v as i32 })
+                            .collect(),
+                    ]
+                })
+                .filter(|candidate| candidate.iter().all(|x| 0 <= *x && *x < self.n as i32))
+                .map(|neighbour| {
+                    self.coords_to_idx(neighbour.iter().map(|x| *x as usize).collect())
+                })
+                .collect(),
         }
     }
     pub fn neighbouring(&self, idx: usize, spins: &Vec<bool>) -> i32 {

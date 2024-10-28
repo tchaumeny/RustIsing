@@ -5,7 +5,6 @@ use std::path::Path;
 
 use crate::lattice::Lattice;
 
-
 #[derive(Clone)]
 pub struct Series {
     pub name: String,
@@ -41,7 +40,6 @@ pub fn plot_histogram(series: Series) {
     println!("Generated file {}", &file_name);
 }
 
-
 pub fn plot_lattice(name: String, lattice: Lattice, spins: &Vec<bool>) {
     if lattice.d != 2 {
         eprintln!("Cannot plot lattice in dimension != 2.");
@@ -61,7 +59,11 @@ pub fn plot_lattice(name: String, lattice: Lattice, spins: &Vec<bool>) {
             Rgb([128, 203, 196])
         };
         for (x, y) in itertools::iproduct!(0..unit, 0..unit) {
-            img.put_pixel(unit * coords[0] as u32 + x, unit * coords[1] as u32 + y, color);
+            img.put_pixel(
+                unit * coords[0] as u32 + x,
+                unit * coords[1] as u32 + y,
+                color,
+            );
         }
     }
 

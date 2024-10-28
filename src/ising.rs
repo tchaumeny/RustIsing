@@ -67,7 +67,6 @@ pub fn gray_sampler(lattice: Lattice) -> impl Iterator<Item = IsingSample> {
 
 /// Naive probabilistic sampler based on a Markov chain
 /// which inverts one spin at a time
-#[allow(dead_code)]
 pub fn mcmc_local_sampler(
     iter: usize,
     lattice: Lattice,
@@ -350,7 +349,10 @@ impl SampleAggregator<IsingSample, MCMCAccumulator> for MCMCAggregator {
             ),
         ]
         .map(|(title, color, data)| Series {
-            name: format!("[d={}, β={}, n={}] {}", self.lattice.d, self.beta, self.lattice.n, title),
+            name: format!(
+                "[d={}, β={}, n={}] {}",
+                self.lattice.d, self.beta, self.lattice.n, title
+            ),
             color: color,
             data: data,
         })
