@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>title</title>
+
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <!-- REVEAL CSS-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="libs/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="libs/reveal.js/dist/reveal.css">
+  
+  <link rel="stylesheet" href="libs/reveal.js/dist/theme/black.css" id="theme">
+  
+  
+  <!--
+  <link rel="stylesheet" href="libs/reveal.js/plugin/title-footer/title-footer-mod.css" />
+  -->
+
+  <!-- MERMAID-->
+  <!--
+  <script src="libs/reveal.js/plugin/mermaid/mermaid.min.js"></script>
+  <style>
+  .mermaid {
+    font-size: 0.5em;
+  }
+  </style>
+  -->
+  
+  <style>
+    [class*=task-list-item] {
+      min-height: 22px;
+      margin-top: 6px!important;
+      margin-bottom: 6px!important;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    [class*=task-list-item]>input:first-child {
+      position: absolute!important;
+      opacity: 0;
+      margin: 0;
+    }
+
+    [class*=task-list-item]>label {
+      padding-left: 29px!important;
+      min-height: 22px;
+      line-height: 22px;
+      display: inline-block;
+      position: relative;
+      vertical-align: top;
+      margin-bottom: 0;
+      font-weight: 400;
+      cursor: pointer;
+    }
+
+    .task-list-item>input:first-child:checked+input[type=hidden]+label::before, .task-list-item>input:first-child:checked+label::before {
+      background-color: #ecf0f1;
+      border-color: #ecf0f1;
+    }
+
+    [class*=task-list-item]>input:first-child+input[type=hidden]+label::before, [class*=task-list-item]>input:first-child+label::before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border: 1px solid #D3CFC8;
+      border-radius: 0;
+      margin-left: -29px;
+    }
+
+    [class*=task-list-item]>input:first-child:checked+input[type=hidden]+label::after, [class*=task-list-item]>input:first-child:checked+label::after {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 7px;
+      height: 10px;
+      border: 2px solid #fff;
+      border-left: none;
+      border-top: none;
+      transform: translate(7.75px,4.5px) rotate(45deg);
+      -ms-transform: translate(7.75px,4.5px) rotate(45deg);
+    }
+
+    .task-list-item>input:first-child:checked+input[type=hidden]+label::after, .task-list-item>input:first-child:checked+label::after {
+      border-bottom-color: #95a5a6;
+      border-right-color: #95a5a6;
+    }
+  </style>
+
+  <!-- Theme used for syntax highlighting of code -->
+  
+  <link rel="stylesheet" href="libs/reveal.js/plugin/highlight/Zenburn.css">
+  
+
+  
+  
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'libs/reveal.js/dist/print/pdf.css' : 'libs/reveal.js/dist/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+
+  <style>
+     .line {
+      display: block;
+    }   
+
+    .line.focus {
+      background: #fdf6e3;
+      color: #657b83;
+    }
+
+    .reveal .slides section .fragment.current-only {
+      visibility: visible;
+      display: none;
+    }
+
+    .reveal .slides section .fragment.current-only.current-fragment {
+      display: block;
+    }
+
+    .line.focus {
+       opacity: 1.0;
+    } 
+
+    @media (device-width: 100vw) and (device-height: 100vh) {
+      .reveal pre code {
+        max-height: 50vh !important;
+      }
+    }
+
+    #logo img {
+      max-height: 3.5em;
+      max-width: none;
+      min-width: 50px;
+    }
+
+    .reveal .slides section .code-presenting-annotation {
+      color: white;
+      background: black;
+      padding: 0px 15px;
+      border-radius: 15px;
+      opacity: 0.75 !important;
+      font-size: 50% !important;
+    }
+  </style>
+  <script>
+    if (window.location.search.match(/print-pdf-now/gi)) {
+      window.print();
+    }
+  </script>
+</head>
+
+<body>
+  
+
+  <div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+      
+  
+    <section >
+      <style>
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+                  text-transform: none;
+		  }
+</style>
+<h1><a id="user-content-modèle-dising" class="anchor" href="#modèle-dising" aria-hidden="true"></a>Modèle d’Ising</h1>
+<h3><a id="user-content-principes-et-simulations" class="anchor" href="#principes-et-simulations" aria-hidden="true"></a>Principes et simulations</h3>
+
+    </section>
+  
+
+  
+    <section >
+      <blockquote>
+<p>Iron filings, after being heated for a long time, are attracted by a loadstone, yet not so strongly or from so great a distance as when not heated.
+A loadstone loses some of its virtue by too great a heat; for its humour is set free, whence its peculiar nature is marred.</p>
+<p><small>– <em>De Magnete</em>, William Gilbert, 1600</small></p>
+</blockquote>
+<!--
+* Attirance magnétique entre la limaille de fer et une pierre aimantée
+* Baisse de cette attirance lorsque l'on chauffe.
+-->
+    </section>
+  
+
+  
+    <section >
+      <h4><a id="user-content-aimantation-spontanée-température-de-curie" class="anchor" href="#aimantation-spontanée-température-de-curie" aria-hidden="true"></a>Aimantation spontanée, température de Curie</h4>
+<p><img src="./spontaneous-magnetization.png" alt="Courbe d'aimantation">
+<small>(Source : <em>Lectures On Phase Transitions And The Renormalization Group</em>, N. Goldenfeld)</small></p>
+<!--
+* Surligner courbe en vert de droite à gauche
+* Singularité en rouge
+* Idée : retrouver ce comportement qualitatif avec des simulations
+-->
+    </section>
+  
+
+  
+    <section >
+      <h4><a id="user-content-modèles-dising--principes" class="anchor" href="#modèles-dising--principes" aria-hidden="true"></a>Modèles d’Ising : Principes</h4>
+<p><img src="./ising-lattice.png" height="200" alt="Ising model lattice" /><br>
+<small>(Source : <a href="https://arxiv.org/abs/1903.11554">https://arxiv.org/abs/1903.11554</a>)</small></p>
+<ul>
+<li>Réseau de $n^d$ petits aimants $\sigma_i \in \lbrace -1, +1 \rbrace$</li>
+<li>Énergie $H = - \sum_{(ij)} J \sigma_i \sigma_j$</li>
+<li>Magnétisation $M = \sum_i \sigma_i$</li>
+<li>Statistique de Maxwell-Boltzmann</li>
+</ul>
+<!-- 
+* Coloriser -1,+1 en bleu/rouge (aimants)
+* Préciser que la somme porte sur les arêtes
+* Distinguer arêtes -1 (même signe, orange) et +1 (signes opposés, violet)
+* Préciser que c'est Maxwell-Boltzmann qui introduit la dépendance en T
+* Symétrie sigma -> - sigma (Z/2Z)
+* Conditions de bord
+-->
+    </section>
+  
+
+  
+    <section >
+      <h4><a id="user-content-distribution-de-maxwell-boltzmann-rappel" class="anchor" href="#distribution-de-maxwell-boltzmann-rappel" aria-hidden="true"></a>Distribution de Maxwell-Boltzmann (rappel)</h4>
+<ul>
+<li>Système $\Sigma$ plongé dans un thermostat à température $T$ (<em>ensemble canonique</em>)</li>
+<li>$\mathbb{P}(\text{Micro-état de }\Sigma\text{ d’énergie H}) = \frac{\exp(-\beta H)}{Z}$</li>
+<li>$\beta \mathrel{\mathop:}= \frac{1}{k_B T} (\mathrel{\mathop:}= \frac{1}{k_B} \frac{\partial{S}}{\partial{E}})$</li>
+<li>$Z(\beta)$ facteur de normalisation (fonction de partition).</li>
+</ul>
+<!--
+* Ici système sigma = réseau d'aimants
+* Sigma + thermostat isolé
+* Échange énergie uniquement entre sigma et thermostat
+* Voir cours de thermo stat
+-->
+    </section>
+  
+
+  
+    <section >
+      <h4><a id="user-content-interprétation" class="anchor" href="#interprétation" aria-hidden="true"></a>Interprétation</h4>
+<p>$\mathbb{P} = \frac{1}{Z} \exp(-\beta H)$</p>
+<ul>
+<li>Basse température : les micro-états (de $\Sigma$) minimisant $H$ sont très favorisés.</li>
+<li>Haute température : les micro-états tendent à être équiprobables</li>
+</ul>
+<!--
+* En bleu, basse température beta -> +inf
+* En rouge, haute température beta -> 0
+* Z(beta) lisse (nécessité de passer à l'infini)
+-->
+    </section>
+  
+
+  
+    <section >
+      <h4><a id="user-content-cas-haute-température" class="anchor" href="#cas-haute-température" aria-hidden="true"></a>Cas haute température</h4>
+<p>Réseau 100x100, $\beta = 0.1$ (MCMC)</p>
+<p><img src="https://raw.githubusercontent.com/tchaumeny/RustIsing/refs/heads/master/examples/2d/mcmc/d-2-b-0-1-n-100-it-50000-spins-lattice.png" alt="Ising lattice, high temperature"></p>
+<!-- On verra pus tard comment obtenir ces simulations -->
+    </section>
+  
+
+  
+    <section >
+      <h4><a id="user-content-cas-basse-température" class="anchor" href="#cas-basse-température" aria-hidden="true"></a>Cas basse température</h4>
+<p>Réseau 100x100, $\beta = 1$ (MCMC)</p>
+<p><img src="https://raw.githubusercontent.com/tchaumeny/RustIsing/refs/heads/master/examples/2d/mcmc/d-2-b-1-n-100-it-50000-spins-lattice.png" alt="Ising lattice, low temperature"></p>
+
+    </section>
+  
+
+  
+    <section >
+      <h4><a id="user-content-comportement-intermédiaire-" class="anchor" href="#comportement-intermédiaire-" aria-hidden="true"></a>Comportement intermédiaire ?</h4>
+<p>En toute dimension $d$ :</p>
+<ul>
+<li>$M / N = \pm 1$ pour $T = 0$ ($\beta = + \infty$).</li>
+<li>$M / N = 0$ pour $T = + \infty$ ($\beta = 0$).</li>
+</ul>
+<p><strong>Questions :</strong> Quel comportement entre ces deux régimes, en dimension $d = 1, 2, 3, …$ ?</p>
+<p><strong>⇒ Simulations informatiques</strong></p>
+
+    </section>
+  
+
+  
+    <section >
+      <h4><a id="user-content-aspects-algorithmiques" class="anchor" href="#aspects-algorithmiques" aria-hidden="true"></a>Aspects algorithmiques</h4>
+<p>Deux principales difficultés pour les simulations :</p>
+<ol>
+<li>$2^N$ états ⇒ Simulations exactes pour $N$ petit, échantillonage pour $N$ grand.</li>
+<li>Calcul de $H$ en $O(N)$ ⇒ Astuce</li>
+</ol>
+<!--
+Qu'est-ce qu'on veut faire ?
+* Déterminer la distribution de probabilité de l'aimantation et de l'énergie, pour une température donnée.
+* Donner un aperçu d'un réseau aléatoire pour une température donnée
+-->
+    </section>
+  
+
+  
+    <section >
+      <h4><a id="user-content-calcul-de-lénergie-astuce" class="anchor" href="#calcul-de-lénergie-astuce" aria-hidden="true"></a>Calcul de l’énergie (astuce)</h4>
+<ul>
+<li>Partir d’un état connu (e.g. $\forall i, \sigma_i = +1$)</li>
+<li>Retourner un spin à la fois</li>
+<li>Variation d’énergie calculable en $O(1)$ (localité)</li>
+</ul>
+
+    </section>
+  
+
+  
+    <section >
+      <h5><a id="user-content-simulations-exactes-par-codage-de-gray-réseau-4x4" class="anchor" href="#simulations-exactes-par-codage-de-gray-réseau-4x4" aria-hidden="true"></a>Simulations exactes par codage de Gray (réseau 4x4)</h5>
+<img src="https://raw.githubusercontent.com/tchaumeny/RustIsing/refs/heads/master/examples/2d/exact/d-2-b-0-1-n-4-periodic-boundary-conditions-magnetization-probabilities.png" width="250px" alt="beta = 0.1" />
+<img src="https://raw.githubusercontent.com/tchaumeny/RustIsing/refs/heads/master/examples/2d/exact/d-2-b-0-2-n-4-periodic-boundary-conditions-magnetization-probabilities.png" width="250px" alt="beta = 0.2" />
+<img src="https://raw.githubusercontent.com/tchaumeny/RustIsing/refs/heads/master/examples/2d/exact/d-2-b-0-3-n-4-periodic-boundary-conditions-magnetization-probabilities.png" width="250px" alt="beta = 0.3" />
+<img src="https://raw.githubusercontent.com/tchaumeny/RustIsing/refs/heads/master/examples/2d/exact/d-2-b-0-4-n-4-periodic-boundary-conditions-magnetization-probabilities.png" width="250px" alt="beta = 0.4" />
+<img src="https://raw.githubusercontent.com/tchaumeny/RustIsing/refs/heads/master/examples/2d/exact/d-2-b-0-5-n-4-periodic-boundary-conditions-magnetization-probabilities.png" width="250px" alt="beta = 0.5" />
+<img src="https://raw.githubusercontent.com/tchaumeny/RustIsing/refs/heads/master/examples/2d/exact/d-2-b-1-n-4-periodic-boundary-conditions-magnetization-probabilities.png" width="250px" alt="beta = 1" />
+<p>Pas de température critique !</p>
+<!--
+* Codage de Gray : itération exhaustive des états
+* Comportement "lisse" entre les cas limites
+* Nécessité de regarder des réseaux plus grands
+-->
+    </section>
+  
+
+  
+    <section >
+      <h4><a id="user-content-simulations-sur-grands-réseaux" class="anchor" href="#simulations-sur-grands-réseaux" aria-hidden="true"></a>Simulations sur grands réseaux</h4>
+<ul>
+<li>Problématique : échantilloner les états selon la distribution $\mathbb{P}$ de Maxwell-Boltzmann</li>
+<li>Idée (MCMC) :
+<ul>
+<li>Générer une promenade aléatoire sur l’espace des états</li>
+<li>Probabilités de transition bien choisies</li>
+<li>Concrètement : chaîne de Markov <strong>irréductible</strong> dont $\mathbb{P}$ est la distribution <strong>stationnaire</strong></li>
+</ul>
+</li>
+</ul>
+<!--
+* Une chaîne de Markov finie irréductible a une unique distribution stationnaire
+* Si on échantillonne suivant une telle chaîne de Markov, on peut approximer la distribution de magnétisation / énergie
+* Cf cours chaînes de Markov
+-->
+    </section>
+  
+
+  
+    <section >
+      <h4><a id="user-content-mcmc-locale--principe" class="anchor" href="#mcmc-locale--principe" aria-hidden="true"></a>MCMC locale : principe</h4>
+<ul>
+<li>Initialiser le réseau, puis répéter :
+<ul>
+<li>Sélectionner un sommet au hasard</li>
+<li>Calculer la variation $\Delta H$ si on inverse ce spin</li>
+<li>Avec probabilité $\min(e^{-\beta \Delta H}, 1)$ :
+<ul>
+<li>Inverser ce spin</li>
+<li>Mettre à jour énergie, magnétisation</li>
+</ul>
+</li>
+<li>Enregistrer l’échantillon</li>
+</ul>
+</li>
+</ul>
+
+    </section>
+  
+
+  
+    <section >
+      <h4><a id="user-content-mcmc-locale-réseau-100x100" class="anchor" href="#mcmc-locale-réseau-100x100" aria-hidden="true"></a>MCMC locale (réseau 100x100)</h4>
+<img src="./mcmc-local/d-2-b-0-1-n-100-magnetization-probabilities.png" width="220px" alt="beta = 0.1" />
+<img src="./mcmc-local/d-2-b-0-43-n-100-magnetization-probabilities.png" width="220px" alt="beta = 0.43" />
+<img src="./mcmc-local/d-2-b-0-45-n-100-magnetization-probabilities.png" width="220px" alt="beta = 0.45" />
+<img src="./mcmc-local/d-2-b-1-n-100-magnetization-probabilities.png" width="220px" alt="beta = 1" />
+<img src="./mcmc-local/d-2-b-0-1-n-100-energy-probabilities.png" width="220px" alt="beta = 0.1" />
+<img src="./mcmc-local/d-2-b-0-43-n-100-energy-probabilities.png" width="220px" alt="beta = 0.43" />
+<img src="./mcmc-local/d-2-b-0-45-n-100-energy-probabilities.png" width="220px" alt="beta = 0.45" />
+<img src="./mcmc-local/d-2-b-1-n-100-energy-probabilities.png" width="220px" alt="beta = 1" />
+<ul>
+<li>Convergence lente</li>
+<li>Brisure d’ergodicité / symétrie !</li>
+</ul>
+<!--
+* Mentionner les valeurs de beta, mais on précisera plus tard pourquoi celles-ci
+* Allure de la courbe très approximative
+* Brisure de symétrie !
+* Voyage d'une branche à l'autre (M -> -M) nécessite de passer par une barrière en énergie
+* Brisure d'ergodicité : passer d'une classe d'ergodicité à l'autre demande un temps qui tend vers +inf
+* En pratique, c'est comme si la chaîne de Markov était réductible
+* Sens physique de la situation : si on laisse un aimant à température ambiante, peu de chance qu'il finisse par inverser son aimantation spontanément (mais théoriquement, ça doit finir par arriver)
+-->
+    </section>
+  
+
+  
+    <section >
+      <h4><a id="user-content-algorithme-de-wolff" class="anchor" href="#algorithme-de-wolff" aria-hidden="true"></a>Algorithme de Wolff</h4>
+<p><img src="./wolff-cluster.png" alt="Wolff cluster algorithm">
+<small>Source : <a href="https://arxiv.org/abs/cond-mat/0311623">https://arxiv.org/abs/cond-mat/0311623</a></small></p>
+<p>Méthode MCMC en <em>cluster</em></p>
+<!--
+* Chaîne de Markov moins "physiquement réaliste"
+* Mais bonnes propriétés de convergence / ergodicité
+* Algo :
+  * Sélectionner un sommet au hasard
+  * Sélectionner chacun de ses voisins de même signe avec probabilité p
+  * Répeter avec chaque voisin
+  * Lorsqu'on a fini d'ajouter des voisins, on retourne le cluster ainsi sélectionné
+* Permet des transitions entre magnétisation globalement positive et négative
+* Fonctionne uniquement avec p bien choisie pour vérifier la condition de stationnarité
+  de la distribution de Maxwell-Boltzmann
+* Je ne justifie pas plus, car pas rentré dans les détails des chaînes de Markov
+-->
+    </section>
+  
+
+  
+    <section >
+      <h5><a id="user-content-simulations-par-échantillonage-de-wolff-réseau-100x100" class="anchor" href="#simulations-par-échantillonage-de-wolff-réseau-100x100" aria-hidden="true"></a>Simulations par échantillonage de Wolff (réseau 100x100)</h5>
+<img src="https://raw.githubusercontent.com/tchaumeny/RustIsing/refs/heads/master/examples/2d/mcmc/d-2-b-0-1-n-100-magnetization-probabilities.png" width="250px" alt="beta = 0.1" />
+<img src="https://raw.githubusercontent.com/tchaumeny/RustIsing/refs/heads/master/examples/2d/mcmc/d-2-b-0-42-n-100-magnetization-probabilities.png" width="250px" alt="beta = 0.42" />
+<img src="https://raw.githubusercontent.com/tchaumeny/RustIsing/refs/heads/master/examples/2d/mcmc/d-2-b-0-43-n-100-magnetization-probabilities.png" width="250px" alt="beta = 0.43" />
+<img src="https://raw.githubusercontent.com/tchaumeny/RustIsing/refs/heads/master/examples/2d/mcmc/d-2-b-0-44-n-100-magnetization-probabilities.png" width="250px" alt="beta = 0.44" />
+<img src="https://raw.githubusercontent.com/tchaumeny/RustIsing/refs/heads/master/examples/2d/mcmc/d-2-b-0-45-n-100-magnetization-probabilities.png" width="250px" alt="beta = 0.45" />
+<img src="https://raw.githubusercontent.com/tchaumeny/RustIsing/refs/heads/master/examples/2d/mcmc/d-2-b-1-n-100-magnetization-probabilities.png" width="250px" alt="beta = 1" />
+<p>Transition pour $0.42 \leq \beta_C \leq 0.45$ !</p>
+<!--
+* Symétrie rétablie !
+* Bonne convergence
+* Transition abrupte
+-->
+    </section>
+  
+
+  
+    <section >
+      <img src="https://raw.githubusercontent.com/tchaumeny/RustIsing/refs/heads/master/examples/2d/mcmc/d-2-b-0-4407-n-2500-it-1000-spins-lattice.png" height="520" alt="Réseau 2500x2500, température critique" />
+<p>Réseau 2500x2500 $\beta_C \approx 0.4407$</p>
+<!--
+* Régime critique (transition)
+* Divergence de la longueur de corrélation
+* Bleu : invariance d'échelle
+* Jaune : invariance par rotation (pas que pi/2 !!!)
+* Rouge : invariance conforme (transformations qui préservent les angles ~ fonctions complexes de dérivée partout non nulle)
+* Violet : Conforme => échelle, rotation (pas réciproque)
+-->
+    </section>
+  
+
+  
+    <section >
+      <h4><a id="user-content-rôle-de-la-dimension" class="anchor" href="#rôle-de-la-dimension" aria-hidden="true"></a>Rôle de la dimension</h4>
+<ul>
+<li>En dimension $d$, un réseau a une valence $2d$ : dimension élevée favorise l’alignement</li>
+<li>En dimension $2$, $\beta_C = \frac{1}{2} \ln(1 + \sqrt{2}) \approx 0.4407$.</li>
+<li>Exercices
+<ul>
+<li>$d = 3$ : Déterminer expérimentalement $\beta_C$.</li>
+<li>$d = 1$ : Vérifier et justifier l’absence de transition de phase ($\beta_C = +\infty$).</li>
+</ul>
+</li>
+</ul>
+
+    </section>
+  
+
+  
+    <section >
+      <h4><a id="user-content-ressources" class="anchor" href="#ressources" aria-hidden="true"></a>Ressources</h4>
+<ul>
+<li><em>Cluster Monte Carlo algorithms</em>, W. Krauth<br>
+<a href="https://arxiv.org/abs/cond-mat/0311623">https://arxiv.org/abs/cond-mat/0311623</a></li>
+<li><em>Statistical Mechanics: Algorithms and Computations</em>, W. Krauth<br>
+<a href="http://www.lps.ens.fr/~krauth/index.php/SMAC">http://www.lps.ens.fr/~krauth/index.php/SMAC</a></li>
+<li><em>Promenade aléatoire</em>,  M. Benaïm, N. El Karoui<br>
+<a href="https://www.editions.polytechnique.fr/?afficherfiche=75">https://www.editions.polytechnique.fr/?afficherfiche=75</a></li>
+</ul>
+<p><a href="https://github.com/tchaumeny/RustIsing">https://github.com/tchaumeny/RustIsing</a> (simulateur)</p>
+
+    </section>
+  
+
+
+
+    </div>
+
+  </div>
+
+  <script src="libs/reveal.js/dist/reveal.js"></script>
+
+<script src="libs/reveal.js/plugin/zoom/zoom.js"></script>
+
+<script src="libs/reveal.js/plugin/notes/notes.js"></script>
+<script src="libs/reveal.js/plugin/search/search.js"></script>
+<script src="libs/reveal.js/plugin/markdown/markdown.js"></script>
+<script src="libs/reveal.js/plugin/highlight/highlight.js"></script>
+<script src="libs/reveal.js/plugin/math/math.js"></script>
+<script>
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+
+        controls: true,
+        controlsTutorial: true,
+        controlsLayout: 'bottom-right',
+        controlsBackArrows: 'faded',
+        progress: true,
+        slideNumber: false,
+        history: true,
+        keyboard: true,
+        overview: true,
+        center: true,
+        touch: true,
+        loop: false,
+        rtl: false,
+        shuffle: false,
+        fragments: true,
+        fragmentInURL: false,
+        embedded: false,
+        help: true,
+        showNotes: false,
+        autoPlayMedia: false,
+        autoSlide: 0,
+        autoSlideStoppable: true,
+        autoSlideMethod: Reveal.navigateNext,
+        defaultTiming: 120,
+        mouseWheel: false,
+        hideAddressBar: true,
+        previewLinks: false,
+        transition: 'slide',
+        transitionSpeed: 'default',
+        backgroundTransition: 'slide',
+        viewDistance: 3,
+        parallaxBackgroundImage: '',
+        parallaxBackgroundSize: '',
+        parallaxBackgroundHorizontal: 0,
+        parallaxBackgroundVertical: 0,
+        display: 'block',
+
+        plugins: [RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight, RevealMath],
+        
+        math: {
+            mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+            config: 'TeX-AMS_HTML-full',
+            TeX: { Macros: { RR: "{\\bf R}" } }
+        },
+        /*
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            
+            { src: 'libs/reveal.js/3.8.0/plugin/search/search.js', async: true },
+            
+
+            
+            { src: 'libs/reveal.js-plugins/3.8.0/plugin/chalkboard/chalkboard.js' },
+                
+
+            
+            { src: 'libs/reveal.js/3.8.0/plugin/menu/menu.js' },
+            
+
+            
+            { src: 'libs/reveal.js/3.8.0/plugin/title-footer/title-footer.js', async: true, callback: function () { title_footer.initialize(); } },
+            
+            {
+                src: 'libs/highlight.js/9.15.10/reveal-code-focus-1.0.0-mod.js',
+                async: true,
+                callback: function () {
+                    RevealCodeFocus();
+                }
+            },
+            // {src: 'libs/reveal.js/3.8.0/plugin/line-numbers/line-numbers.js'}
+        ],
+        keyboard: {
+            67: function () { RevealChalkboard.toggleNotesCanvas() },	// toggle notes canvas when 'c' is pressed
+            66: function () { RevealChalkboard.toggleChalkboard() },	// toggle chalkboard when 'b' is pressed
+            46: function () { RevealChalkboard.clear() },	// clear chalkboard when 'DEL' is pressed
+            8: function () { RevealChalkboard.reset() },	// reset chalkboard data on current slide when 'BACKSPACE' is pressed
+            68: function () { RevealChalkboard.download() },	// downlad recorded chalkboard drawing when 'd' is pressed
+        },
+        chart: {
+            defaults: {
+                global: {
+                    title: { fontColor: "#FFF" },
+                    legend: {
+                        position: "bottom",
+                            labels: { fontColor: "#FFF" },
+                    },
+                    tooltips: {
+                        labels: { fontColor: "#FFF" },
+                    },
+                },
+                scale: {
+                    scaleLabel: { fontColor: "#FFF" },
+                    gridLines: { color: "#FFF", zeroLineColor: "#FFF" },
+                    ticks: { fontColor: "#FFF" },
+                }
+            },
+            line: { borderColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"], "borderDash": [[5, 10], [0, 0]] },
+            bar: { backgroundColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"] },
+            pie: { backgroundColor: [["rgba(0,0,0,.8)", "rgba(220,20,20,.8)", "rgba(20,220,20,.8)", "rgba(220,220,20,.8)", "rgba(20,20,220,.8)"]] },
+            radar: { borderColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"] },
+        },
+        anything: [ 
+            {
+                className: "mermaid"
+            },
+            // ...
+        ],
+        menu: {
+            // Specifies which side of the presentation the menu will 
+            // be shown. Use 'left' or 'right'.
+            side: 'left',
+
+                // Specifies the width of the menu.
+                // Can be one of the following:
+                // 'normal', 'wide', 'third', 'half', 'full', or
+                // any valid css length value
+                width: 'normal',
+
+                    // Add slide numbers to the titles in the slide list.
+                    // Use 'true' or format string (same as reveal.js slide numbers)
+                    numbers: false,
+
+                        // Specifies which slide elements will be used for generating
+                        // the slide titles in the menu. The default selects the first
+                        // heading element found in the slide, but you can specify any
+                        // valid css selector and the text from the first matching
+                        // element will be used.
+                        // Note: that a section data-menu-title attribute or an element
+                        // with a menu-title class will take precedence over this option
+                        titleSelector: 'h1, h2, h3, h4, h5, h6',
+
+                            // If slides do not have a matching title, attempt to use the
+                            // start of the text content as the title instead
+                            useTextContentForMissingTitles: false,
+
+                                // Hide slides from the menu that do not have a title.
+                                // Set to 'true' to only list slides with titles.
+                                hideMissingTitles: false,
+
+                                    // Adds markers to the slide titles to indicate the 
+                                    // progress through the presentation. Set to 'false'
+                                    // to hide the markers.
+                                    markers: true,
+
+                                        // Specify custom panels to be included in the menu, by
+                                        // providing an array of objects with 'title', 'icon'
+                                        // properties, and either a 'src' or 'content' property.
+                                        // custom: false,
+                                        custom: [],
+                                            // Specifies the themes that will be available in the themes
+                                            // menu panel. Set to 'true' to show the themes menu panel
+                                            // with the default themes list. Alternatively, provide an
+                                            // array to specify the themes to make available in the
+                                            // themes menu panel, for example...
+                                            // [
+                                            //     { name: 'Black', theme: 'css/theme/black.css' },
+                                            //     { name: 'White', theme: 'css/theme/white.css' },
+                                            //     { name: 'League', theme: 'css/theme/league.css' }
+                                            // ]
+                                            themes: false,
+
+                                                // Specifies the path to the default theme files. If your
+                                                // presentation uses a different path to the standard reveal
+                                                // layout then you need to provide this option, but only
+                                                // when 'themes' is set to 'true'. If you provide your own 
+                                                // list of themes or 'themes' is set to 'false' the 
+                                                // 'themesPath' option is ignored.
+                                                themesPath: 'css/theme/',
+
+                                                    // Specifies if the transitions menu panel will be shown.
+                                                    // Set to 'true' to show the transitions menu panel with
+                                                    // the default transitions list. Alternatively, provide an
+                                                    // array to specify the transitions to make available in
+                                                    // the transitions panel, for example...
+                                                    // ['None', 'Fade', 'Slide']
+                                                    transitions: false,
+
+                                                        // Adds a menu button to the slides to open the menu panel.
+                                                        // Set to 'false' to hide the button.
+                                                        openButton: true,
+
+                                                            // If 'true' allows the slide number in the presentation to
+                                                            // open the menu panel. The reveal.js slideNumber option must 
+                                                            // be displayed for this to take effect
+                                                            openSlideNumber: false,
+
+                                                                // If true allows the user to open and navigate the menu using
+                                                                // the keyboard. Standard keyboard interaction with reveal
+                                                                // will be disabled while the menu is open.
+                                                                keyboard: true,
+
+                                                                    // Normally the menu will close on user actions such as
+                                                                    // selecting a menu item, or clicking the presentation area.
+                                                                    // If 'true', the sticky option will leave the menu open
+                                                                    // until it is explicitly closed, that is, using the close
+                                                                    // button or pressing the ESC or m key (when the keyboard 
+                                                                    // interaction option is enabled).
+                                                                    sticky: false,
+
+                                                                        // If 'true' standard menu items will be automatically opened
+                                                                        // when navigating using the keyboard. Note: this only takes 
+                                                                        // effect when both the 'keyboard' and 'sticky' options are enabled.
+                                                                        autoOpen: true,
+
+                                                                            // If 'true' the menu will not be created until it is explicitly
+                                                                            // requested by calling RevealMenu.init(). Note this will delay
+                                                                            // the creation of all menu panels, including custom panels, and
+                                                                            // the menu button.
+                                                                            delayInit: false,
+
+                                                                                // If 'true' the menu will be shown when the menu is initialised.
+                                                                                openOnInit: false,
+
+                                                                                    // By default the menu will load it's own font-awesome library
+                                                                                    // icons. If your presentation needs to load a different
+                                                                                    // font-awesome library the 'loadIcons' option can be set to false
+                                                                                    // and the menu will not attempt to load the font-awesome library.
+                                                                                    loadIcons: false
+        },
+        chalkboard: {
+            toggleChalkboardButton: { left: "60px", bottom: "30px", top: "auto", right: "auto" },
+            toggleNotesButton: { left: "90px", bottom: "30px", top: "auto", right: "auto" },
+
+        }
+        */
+    });
+
+</script>
+
+
+</body>
+
+</html>
